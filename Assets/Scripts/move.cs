@@ -9,6 +9,10 @@ public class move : MonoBehaviour
     public Transform spieler;
     public int hops = 1;
     public float sprung = 200f;
+    public Transform respawn;
+
+    public Transform joe;
+   
  
   
 
@@ -58,9 +62,8 @@ public class move : MonoBehaviour
         }
         if(boom.collider.tag == "Gegner")
         {
-            spieler.position = new Vector3(10, 4, 7);
-            rig.velocity = Vector3.zero;
-            rig.angularVelocity = Vector3.zero;
+            rig.freezeRotation = true;
+            rig.AddForce(Vector3.Normalize(new Vector3(0, 0, spieler.position.z - boom.collider.transform.position.z)) * 5000);
         }
     }
 
